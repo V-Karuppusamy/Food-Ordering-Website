@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <link rel="stylesheet" href="/static/Daily Kozhi.css">
+    <style>
+       h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        img {
+            max-width: 50%;
+            height: 50%;
+        }
+
+        button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px;
+            border: none;
+            cursor: pointer;
+            border-radius: 1rem;
+            border-style: none;
+            width: 5rem;
+            height: 4rem;
+        }
+
+        button:hover {
+            background-color: rgb(138, 9, 9);
+        }
+
+      ul{
+    padding: 2.5rem;
+    background: white;
+    border-radius: 0.5rem;
+    border: 0.1rem solid rgba(0,0,0,0.2);
+    box-shadow: var(--box-shadow);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+
+
+
+
+ul img{
+    height: 17rem;
+    margin: 0 1rem;
+}
+
+ul{
+    color: var(--black);
+    font-size: 2.5rem;
+}
+
+ul{
+    padding: 1rem ;
+}
+
+ul{
+    font-size: 1.7rem;
+    color: var(--green);
+
+}
+
+ul{
+    color: var(--black);
+    font-weight: bolder;
+    margin-right: 1rem;
+    font-size: 2.5rem;
+}
+button {
+  margin: 1% 40% 0 40%;
+}
+#clearWishlistBtn{
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 1rem;
+            border-style: none;
+            width: 8rem;
+            height: 5rem;
+            font-size: 1.4rem;
+            font-weight: bolder;
+            
+            text-align: center;
+            position: absolute;
+        }
+
+#clearWishlistBtn:hover {
+        background-color: rgb(138, 9, 9);
+        }
+#goto{
+    width: 100%;
+    padding: 3px;
+    background-color: var(--black);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 2rem;
+}
+
+#goto:hover{
+    background-color: var(--green);
+}
+
+    </style>
+    
+</head>
+<body>
+    <section>   
+       <header>
+    
+        <h2 class="wish">my wishlist</h2>
+        </header>
+      </section>
+
+
+    <section>
+       <ul id="wishlistItems">
+
+       </ul>
+      </section>
+<section>
+        <a id="clearWishlistBtn">Clear Wishlist</a>
+      </section>
+   
+    <script src="/static/js/Daily Kozhi Wishlist.js">
+//       document.addEventListener('DOMContentLoaded', function() {
+//         const wishlistItemsContainer = document.getElementById('wishlistItems');
+//         const clearWishlistBtn = document.getElementById('clearWishlistBtn');
+  
+//         // Function to render wishlist items on the page
+//         function renderWishlist() {
+//           const storedWishlist = localStorage.getItem('wishlist');
+  
+//           if (!storedWishlist) {
+//             wishlistItemsContainer.innerHTML = '<p>Your wishlist is empty.</p>';
+//             return;
+//           }
+  
+//           let wishlist;
+//           try {
+//             wishlist = JSON.parse(storedWishlist);
+//           } catch (error) {
+//             console.error('Error parsing wishlist data:', error);
+//             wishlistItemsContainer.innerHTML = '<p>An error occurred while loading your wishlist.</p>';
+//             return;
+//           }
+  
+//           wishlistItemsContainer.innerHTML = ''; // Clear existing items
+  
+//           if (wishlist.length === 0) {
+//             wishlistItemsContainer.innerHTML = '<p>Your wishlist is empty.</p>';
+//           } else {
+//             wishlist.forEach((item, index) => {
+//               const listItem = document.createElement('li');
+//               listItem.innerHTML = `
+//                 <h3>${item.name || 'Product Name Not Available'}</h3>
+//                 <p>${item.description || 'Product Description Not Available'}</p>
+//                 <p>Price: ${item.price || 'Price Not Available'}</p>
+//                 <img src="${item.image || 'image-not-available.jpg'}" alt="${item.name || 'Product'} Image">
+//                 <a href="" class="btn add-to-cart-btn">add to basket</a>
+//                 <button class="removeBtn" data-index="${index}">X</button>`;
+//               wishlistItemsContainer.appendChild(listItem);
+//             });
+  
+//             // Add event listeners to remove buttons
+//             const removeButtons = document.querySelectorAll('.removeBtn');
+//             removeButtons.forEach(button => {
+//               button.addEventListener('click', function() {
+//                 const indexToRemove = parseInt(button.getAttribute('data-index'));
+//                 removeFromWishlist(indexToRemove);
+//               });
+//             });
+//           }
+//         }
+  
+//         // Event listener for the "Clear Wishlist" button
+//         clearWishlistBtn.addEventListener('click', function() {
+//           // Clear the wishlist in localStorage
+//           localStorage.removeItem('wishlist');
+  
+//           // Render the updated wishlist (empty)
+//           renderWishlist();
+//         });
+  
+//         // Function to remove a product from the wishlist
+//         function removeFromWishlist(index) {
+//           let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+//           wishlist.splice(index, 1);
+//           localStorage.setItem('wishlist', JSON.stringify(wishlist));
+//           renderWishlist();
+//         }
+  
+//         // Call the function to render wishlist when the page loads
+//         renderWishlist();
+//       });
+      
+
+//       // add to cart 
+//  // main.js
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+  
+//     // Retrieve the cart from session storage
+//     const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+  
+//     addToCartButtons.forEach(button => {
+//         button.addEventListener('click', function () {
+//         const foodItem = button.closest('.food-item');
+//         const itemId = foodItem.getAttribute('data-id');
+//         const itemName = foodItem.getAttribute('data-name');
+//         const itemPrice = parseFloat(foodItem.getAttribute('data-price'));
+//         const itemImage = foodItem.querySelector('img').src;
+  
+//         // Check if the item is already in the cart
+//         const existingItem = cart.find(item => item.id === itemId);
+  
+//         if (existingItem) {
+//           // Increment quantity if the item is already in the cart
+//           existingItem.quantity++;
+//           alert(`Quantity of ${itemName} increased to ${existingItem.quantity}`);
+//         } else {
+//           // Add the item to the cart with quantity 1 if it's not in the cart
+//           cart.push({
+//             id: itemId,
+//             name: itemName,
+//             price: itemPrice,
+//             quantity: 1,
+//             image: itemImage
+//           });
+//           alert(`${itemName} added to the cart.`);
+//         }
+  
+//         // Store the updated cart in session storage
+//         sessionStorage.setItem('cart', JSON.stringify(cart));
+  
+//         // Redirect to the cart page after adding to the cart
+//         window.location.href = 'Daily Kozhi Wishlist.html';
+//       });
+//     });
+//   });
+
+    </script>
+    
+
+
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!-- wishlist.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+  <h1>Wishlist</h1>
+
+  <ul id="wishlistItems"></ul>
+
+  <button id="clearWishlistBtn">Clear Wishlist</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const wishlistItemsContainer = document.getElementById('wishlistItems');
+      const clearWishlistBtn = document.getElementById('clearWishlistBtn');
+
+      // Function to render wishlist items on the page
+      function renderWishlist() {
+        const storedWishlist = localStorage.getItem('wishlist');
+
+        if (!storedWishlist) {
+          wishlistItemsContainer.innerHTML = '<p>Your wishlist is empty.</p>';
+          return;
+        }
+
+        let wishlist;
+        try {
+          wishlist = JSON.parse(storedWishlist);
+        } catch (error) {
+          console.error('Error parsing wishlist data:', error);
+          wishlistItemsContainer.innerHTML = '<p>An error occurred while loading your wishlist.</p>';
+          return;
+        }
+
+        wishlistItemsContainer.innerHTML = ''; // Clear existing items
+
+        if (wishlist.length === 0) {
+          wishlistItemsContainer.innerHTML = '<p>Your wishlist is empty.</p>';
+        } else {
+          wishlist.forEach((item, index) => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+              <h3>${item.name || 'Product Name Not Available'}</h3>
+              <p>${item.description || 'Product Description Not Available'}</p>
+              <p>Price: ${item.price || 'Price Not Available'}</p>
+              <img src="${item.image || 'image-not-available.jpg'}" alt="${item.name || 'Product'} Image">
+              <button class="removeBtn" data-index="${index}">Remove</button>
+            `;
+            wishlistItemsContainer.appendChild(listItem);
+          });
+
+          // Add event listeners to remove buttons
+          const removeButtons = document.querySelectorAll('.removeBtn');
+          removeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+              const indexToRemove = parseInt(button.getAttribute('data-index'));
+              removeFromWishlist(indexToRemove);
+            });
+          });
+        }
+      }
+
+      // Event listener for the "Clear Wishlist" button
+      clearWishlistBtn.addEventListener('click', function() {
+        // Clear the wishlist in localStorage
+        localStorage.removeItem('wishlist');
+
+        // Render the updated wishlist (empty)
+        renderWishlist();
+      });
+
+      // Function to remove a product from the wishlist
+      function removeFromWishlist(index) {
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        wishlist.splice(index, 1);
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        renderWishlist();
+      }
+
+      // Call the function to render wishlist when the page loads
+      renderWishlist();
+    });
+  </script>
+
+</body>
+</html>

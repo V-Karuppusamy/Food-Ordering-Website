@@ -1,0 +1,645 @@
+/* import from google fonts for font style */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+
+:root{
+    --green: #27ae60;
+    --black:#192a56;
+    --light-color: #666;
+    --box-shadow: 0 .5rem 1.5rem rgba(0,0,0,0.1);
+}
+
+/* Universal selector for font familyand also for text style */
+*{
+    font-family:"nunito",sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    transition: all 0.2s linear;
+}
+
+/* we give the scroll properties for webpage */
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    /* scroll padding top */
+    scroll-padding-top: 5.5rem;
+    scroll-behavior: smooth;
+}
+
+/* header display alignment in single line */
+header{
+    position: fixed;
+    top: 0; left: 0; right: 0; 
+    background: white;
+    padding: 1rem 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* want to learn */
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+}
+
+/* daily kozhi (logo) size and colour  */
+header .logo{
+    color: var(--black);
+    font-size: 2.5rem;
+    font-weight: bolder;
+    
+}
+
+#chick{
+    width: 5.5rem;
+    transition: width 2s;
+}
+
+/* for navigation in middle(home,dishes,about,menu,order) */
+header .navbar a{
+    font-size: 1.7rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    color:var(--light-color);
+    
+}
+
+/* active colour while mouse hover ,want to change */
+header .navbar a.active,
+header .navbar a:hover{
+    color:white;
+    background:var(--green)
+}
+
+/* header top right  icons styling */
+header .icons i,
+header .icons a{
+    cursor: pointer;
+    margin-left: 0.5rem;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    width: 4.5rem;
+    text-align: center;
+    font-size: 1.7rem;
+    color: var(--black);
+    border-radius: 29%;
+    background: #eee;
+}
+
+/*header icons right side top styling when mouse over  */
+header .icons i:hover,
+header .icons a:hover{
+    color: white;
+    background: var(--green);
+    transform: rotate(360deg)
+}
+
+/* above 991px(width) the option font icon will get hidden  */
+header .icons #menu-bars{
+    display: none;
+}
+
+/* 7 nov 2023 project */
+#search-form{
+    position: fixed;
+    top: -110%; left: 0;  
+    height: 100%; width: 100%;
+    z-index: 1004;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+/* to activate search bar */
+#search-form.active{
+    top: 0;
+}
+
+#search-form #search-box{
+    width: 50rem;
+    border-bottom: 0.1rem solid white;
+    padding: 1rem 0;
+    color: white;
+    font-size: 3rem;
+    text-transform: none;
+    background: none;
+}
+
+#search-form #search-box::placeholder{
+    color: #eee;
+}
+
+#search-form #search-box::-webkit-search-cancel-button{ 
+    -webkit-appearance: none;
+}
+
+#search-form label{
+    color: white;
+    cursor: pointer;
+    font-size: 3rem;
+}
+
+#search-form label:hover{
+    color: var(--green);
+}
+
+
+#search-form #close{
+    position: absolute;
+    color: white;
+    cursor: pointer;
+    top: 2rem; right: 3rem;
+    font-size: 5rem;
+}
+
+#search-form #close:hover{
+    color: var(--green);
+}
+
+
+
+
+
+
+
+section{
+    padding: 2rem 9%;
+}
+
+section:nth-child(odd){
+    background: #eee;
+}
+
+
+
+.home .home-slider .slide {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding-top: 9rem;
+}
+
+.home .home-slider .slide .content{
+    flex: 1 1 45rem;
+}
+
+.home .home-slider .slide .image{
+    flex: 1 1 45rem;
+}
+
+.home .home-slider .slide .image img{
+    width: 100%;
+}
+
+.home .home-slider .slide .content span{
+    color: var(--green);
+    font-size: 2.5rem;
+}
+
+.home .home-slider .slide .content h3{
+    color: var(--black);
+    font-size: 7rem;
+}
+
+.home .home-slider .slide .content p{
+    color: var(--light-color);
+    font-size: 2.2rem;
+    padding: 0.5rem 0;
+    line-height: 1.5em;
+}
+
+.sub-heading{
+    text-align: center;
+    color: var(--green);
+    font-size: 2rem;
+    padding-top: 1rem;
+}
+
+.heading{
+    text-align: center;
+    color: var(--black);
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.btn{
+    margin-top: 1rem;
+    display: inline-block;
+    font-size: 1.7rem;
+    color: white;
+    background: var(--black);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    padding: 0.8rem 3rem;
+    
+}
+
+.btn:hover{
+    background: var(--green);
+    letter-spacing: 0.1rem;
+}
+
+.home .swiper-pagination-bullet-active{
+    background: var(--green);
+}
+
+.dishes .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+}
+
+.dishes .box-container .box{
+    padding: 2.5rem;
+    background: white;
+    border-radius: 0.5rem;
+    border: 0.1rem solid rgba(0,0,0,0.2);
+    box-shadow: var(--box-shadow);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.dishes .box-container .box .fa-heart{
+    position: absolute;
+    top: 1.5rem;
+    background: #eee;
+    border-radius: 50%;
+    height: 4rem;
+    width: 6.5rem;
+    line-height: 4rem;
+    font-size: 1rem;
+    color: var(--black);
+
+}
+
+.dishes .box-container .box .fa-heart:hover{
+    background: var(--green);
+    color: white;
+    
+}
+
+.dishes .box-container .box .fa-heart{
+    right: 1.5rem;
+}
+
+
+.dishes .box-container .box img{
+    height: 17rem;
+    margin: 1rem 0;
+}
+
+.dishes .box-container .box h3{
+    color: var(--black);
+    font-size: 2.5rem;
+}
+
+.dishes .box-container .box .stars{
+    padding: 1rem 0;
+}
+
+.dishes .box-container .box .stars i{
+    font-size: 1.7rem;
+    color: var(--green);
+
+}
+
+.dishes .box-container .box span{
+    color: var(--green);
+    font-weight: bolder;
+    margin-right: 1rem;
+    font-size: 2.5rem;
+}
+
+.about .row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+
+}
+
+.about .row .image{
+    flex: 1 1 45rem;
+
+}
+
+.about .row .image img{
+    width: 80%;
+
+}
+
+.about .row .content{
+    flex: 1 1 45rem;
+    
+}
+
+.about .row .content h3{
+    color: var(--black);
+    font-size: 4rem;
+    padding: 0.5rem 0;
+}
+
+.about .row .content p{
+    color: var(--light-color);
+    font-size: 1.5rem;
+    padding: 0.5rem 0;
+    line-height: 2;
+}
+
+.about .row .content .icons-container{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+    margin-top: 0.5rem;
+}
+
+.about .row .content .icons-container .icons{
+    background: #eee;
+    border-radius: 0.5rem;
+    border: 0.1rem solid rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex: 1 1 17rem;
+    padding: 1.5rem 1rem;
+}
+
+.about .row .content .icons-container .icons i{
+    font-size: 2.5rem;
+    color: var(--green);
+}
+
+.about .row .content .icons-container .icons span{
+    font-size: 1.5rem;
+    color: var(--black);
+}
+
+.footer .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 1.5rem;
+}
+
+.footer .box-container .box h3{
+    padding: 0.5rem 0;
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+.footer .box-container .box a{
+    display: block;
+    padding: 0.5rem 0;
+    font-size: 1.5rem;
+    color: var(--light-color);
+}
+
+.footer .box-container .box a:hover{
+    color: var(--green);
+    text-decoration: underline;
+}
+
+.credit{
+    text-align: center;
+    font-size: 2rem;
+    color: var(--black);
+    padding: 0.5rem;
+    padding-top: 1.5rem;
+    padding-top: 1.5rem;
+}
+
+.credit a{
+    color: var(--green);
+}
+
+
+.team .slide {
+     padding: 2rem;
+     box-shadow: var(--box-shadow);
+     background: white;
+     border-radius: 0.5rem;
+     position: relative;
+     width: 32%;
+}
+.team .slide .fa-quote-right{
+    position: absolute;
+    top: 2rem; right: 2rem;
+    font-size: 2rem;
+    color: #ccc;
+}
+
+.team .slide .user{
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    
+    
+}
+
+.team .slide .user img {
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
+.team .slide .user h3{
+    color: var(--black);
+    font-size: 2rem;
+    padding-bottom: 0.5rem;
+    
+}
+
+.team .slide .user i{
+    font-size: 1.3rem;
+    color: var(--green);
+}
+.team .slide  p{
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: var(--light-color);
+}
+
+/* .order form{
+    width: 90rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+    border: 0.1rem solid rgba(0,0,0,0.2);
+    background: white;
+    padding: 1.5rem;
+    margin:  0 auto;
+}
+
+.order form .inputbox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.order form .inputbox .input{
+    width: 49%;
+}
+
+.order form .inputbox .input span{
+    display: block;
+    padding: 5rem 0;
+    font-size: 1.5rem;
+    color: var(--light-color);
+} */
+.swiper-slide ,.slide{
+    width:200px
+}
+
+
+
+
+
+
+
+
+
+
+
+/* my wishlists web page */
+
+header .wish{
+    font-family:"nunito",sans-serif;
+    box-sizing: border-box;
+    margin: auto;
+    font-size: 2.5rem ;
+    color: var(--green);
+    padding: 1rem;
+}
+
+
+/* .wishlist{
+    background-color: #eee;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* meadia queries for responsive with all devices */
+@media (max-width:991px){
+    html{
+        font-size: 55%;
+       
+    }
+    /* for relevent header elements will get shrinked when 991px(width) resolution reaches*/
+    header{
+        padding:1rem 2rem;
+    }
+}
+
+@media (max-width:768px){
+    /* when resolution shrinks to 768px(width) the option font icon will appear */
+    header .icons #menu-bars{
+        display: inline-block;
+    }
+
+    /* navigation elements will get hidden and will be accessed inside option font icon(javascript used for this) */
+    header .navbar{
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: white;
+        /*  top and bottom line will appear when option font icon is clicked  */
+        border-top: 0.1rem solid rgba(0,0,0,0.2);
+        border-bottom: 0.1rem solid rgba(0,0,0,0.2);
+        padding: 1rem;
+        clip-path: polygon(0 0,100% 0,100% 0,0 0);
+    }
+    
+
+    header .navbar.active{
+        clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+    }
+
+    /* when option font icon is clicked then the navigation elements will get displayed under the header section  */
+    header .navbar a{
+        display: block;
+        padding:1.5rem;
+        margin:1rem;
+        font-size: 2rem;
+        background: #eee; 
+    }
+/* 7 nov 2023*/
+    #search-form #search-box{
+        width: 90%;
+        margin: 0 1rem;
+
+    } 
+}
+
+@media (max-width:991px){
+    html{
+        font-size: 50%;
+       }
+
+    .dishes .box-container .box img{
+        height: auto;
+        width: 100%;
+       } 
+    }
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

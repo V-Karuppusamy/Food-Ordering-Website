@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<title>login</title>
+<style>
+    :root{
+    --green: #27ae60;
+    --black:#192a56;
+    --light-color: #666;}
+body {
+    font-family: Arial, sans-serif;
+    /* background-color: var(--black); */
+    color: var(--light-color);
+    margin: 0;
+    padding: 0;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    color: var(--green);
+    text-align: center;
+    margin-top: 2%;
+    text-transform: uppercase;
+}
+
+form {
+    width: 300px;
+    margin: 10% auto;
+    /* background-color: var(--black); */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--light-color);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    border: 1px solid var(--light-color);
+    border-radius: 4px;
+    /* background-color: var(--black); */
+    color: var(--light-color);
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--black);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--green);
+}
+
+p {
+    color: red;
+    text-align: center;
+    margin-top: 2%;
+}
+
+</style>
+</head>
+<body>
+<!-- <h1>otp</h1> -->
+	    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            
+                {% for message in messages %}
+                    <p style="color:red">{{ message }}</p>
+                {% endfor %}
+            
+        {% endif %}
+    {% endwith %}
+
+<form action="{{url_for('verify')}}" method='POST'>
+    <h1>otp</h1>
+<label>OTP</label>
+<input type='text' required name='otp'>
+
+<input type='submit' value='verify'>
+
+
+</form>
+
+
+
+
+</body>
+</html>

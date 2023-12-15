@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily கோழி</title>
+<!-- Correct order -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="{{ url_for('static', filename='js/koli.js') }}"></script>
+    <link rel="stylesheet" href="/static/Daily Kozhi.css">
+    
+    
+    <!-- getting the icons from font awesome(bootstrap) -->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="icon" href="/static/running chick.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    	
+</head>
+
+<body>
+
+    <header>
+        <a href="#" class="logo"><i><img id="chick" src="/static/running chick.png"></i> Daily கோழி</a>
+       
+        <!-- for creating navigation elements -->
+        <nav class="navbar">
+            <a class="active home" href="#home">home</a>
+            <a href="#dishes" class="dishes">dishes</a>
+            <a href="#about" class="about">about</a>
+            <a href="#team" class="team">our team</a> 
+            <!-- <a href="#order" class="order">order</a> -->
+        </nav>
+
+        <!-- for header icons in top right corner -->
+        <div class="icons">
+            <i class="fa-solid fa-bars" id="menu-bars"></i>
+            <span>
+                {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            
+                {% for message in messages %}
+                    <p style="color: red">{{ message }}</p>
+                {% endfor %}
+            
+        {% endif %}
+    {% endwith %}
+            </span>
+            <a href="{{url_for('log')}}" class="fa-solid fa-user" id="search-icon"></a>
+            <a href="{{url_for('wishlist')}}" class="fa-solid fa-heart"></a>
+            <a href="{{url_for('basket')}}" class="fa-solid fa-cart-shopping"></a>
+        </div>
+        
+    </header>
+<!-- 7 nov project 2023 -->
+    <!-- <form action="" id="search-form">
+        <input type="search" placeholder="search..." name="" id="search-box">
+        <label for="search-box" class="fa-solid fa-magnifying-glass fa-beat"></label>
+        <i class="fas fa-times" id="close"></i>
+    </form> -->
+    
+
+
+
+
+
+<!-- Home -->
+    <section class="home" id="home">
+
+        <div class="swiper mySwiper home-slider">
+
+            <div class="swiper-wrapper wrapper">
+
+                <div class="swiper-slide slide">
+                    <div class="content">
+                        <span>Chef's Special</span>
+                        <h3>Nattu kozhi Biryani</h3>
+                        <p>engalidam tharamaana nattu kozhi biryani ullathu. neengal ithuvarai suvaikaatha suvaiyil</p>
+                        <button onclick="moveTo('dishes', 'special')" class="btn" >Order now</button>
+                        <!-- <button class="btn">Order now</button> -->
+                    </div>
+                    <div class="image">
+                        <img src="/static/Biryani.png" alt="">
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <div class="content">
+                        <span>Chef's Special</span>
+                        <h3>Barbeque Chicken</h3>
+                        <p>Innaiku oru pudi, ellaarum vaanga always welcomes you</p>
+                        <a onclick="moveTo('dishes', 'special')" class="btn" id="k">Order now</a>
+                    </div>
+                    <div class="image">
+                        <img src="/static/turkey1.png" alt="">
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <div class="content">
+                        <span>Chef's Special</span>
+                        <h3>Chicken combo mania</h3>
+                        <p>bbq leg piece, turkey roll, chicken wings, steamed chicken fry, honey chicken</p>
+                        <a onclick="moveTo('dishes', 'special')" class="btn">Order now</a>
+                    </div>
+                    <div class="image">
+                        <img src="/static/Tandoori-Platter-scaled-1-768x644.jpg" alt="">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+        </div>
+
+    </section>
+
+
+<!-- Dishes -->
+    <section class="dishes" id="dishes">
+
+        <h3 class="sub-heading">our dishes</h3>
+        <h1 class="heading">popular dishes</h1>
+
+        <div class="box-container">
+
+            <div class="box food-item"   data-name="tower burger " data-id="1"  data-price="199">
+                
+                <a class="fa-solid fa-heart" id="addToWishlistBtn1"></a>
+                <img src="/static/Triple trouble burger.png" alt="Food Item 1">
+                <h3>tower burger</h3>
+                
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span>&#8377;199<span>
+                <a href="" class="btn add-to-cart-btn">add to basket</a>
+                
+
+            </div>
+
+            <div class="box food-item"  data-name="popcorn chicken " data-id="2" data-price="99">
+               
+                <a  class="fa-solid fa-heart" id="addToWishlistBtn2"></a>
+                <img src="/static/fried chicken.png" alt="Food Item 2">
+                <h3>popcorn chicken</h3>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span class="dummy">&#8377;99<span>
+                <a href="" class="btn add-to-cart-btn">add to basket</a>
+
+            </div>
+
+            <div class="box food-item"  data-name="aambur biryani " data-id="3" data-price="149">
+                <a  class="fa-solid fa-heart" id="addToWishlistBtn3"></a>
+                <img src="/static/arabic kuthu.png">
+                <h3>aambur biryani</h3>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span>&#8377;149<span>
+                <a href="" class="btn add-to-cart-btn">add to basket</a>
+
+            </div>
+
+            <div class="box food-item"  data-name="crab kulambu" data-id="4" data-price="249">
+                <a  class="fa-solid fa-heart" id="addToWishlistBtn4"></a>
+                <img src="/static/crab fry .jpg">
+                <h3>crab kulambu</h3>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span>&#8377;249<span>
+                <a href="" class="btn add-to-cart-btn">add to basket</a>
+
+            </div>
+
+            <div class="box food-item"  data-name="cuddalore fish fry" data-id="5" data-price="99">
+                <a  class="fa-solid fa-heart" id="addToWishlistBtn5"></a>
+                <img src="/static/fish fry.png">
+                <h3>cuddalore fish fry</h3>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span>&#8377;99<span>
+                <a href="" class="btn add-to-cart-btn">add to basket</a>
+
+            </div>
+
+            <div class="box food-item"  data-name="ecr prawn fry" data-id="6" data-price="199">
+                <a class="fa-solid fa-heart" id="addToWishlistBtn6"></a>
+                <img src="/static/fried prawn.png">
+                <h3>ecr prawn fry</h3>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span>&#8377;199<span>
+                <a href="" class="btn add-to-cart-btn">add to basket</a>
+
+            </div>
+        </div>
+
+        <h1 class="heading" style="padding-top: 2rem;" id="special">chef's special</h1>
+
+        <div class="box-container">
+
+            <div class="box food-item"  data-name="naatu kozhi biryani" data-id="7" data-price="299">
+                <a  class="fa-solid fa-heart" id="addToWishlistBtn7"></a>
+                <img src="/static/Biryani.png">
+                <h3>nattu kozhi biryani</h3>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span>&#8377;299<span>
+                <a href="" class="btn add-to-cart-btn">add to basket</a>
+
+            </div>
+
+            <div class="box food-item"  data-name="barbeque chicken" data-id="8" data-price="399">
+                <a class="fa-solid fa-heart" id="addToWishlistBtn8"></a>
+                <img src="/static/turkey1.png">
+                <h3>barbeque chicken</h3>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span>&#8377;399<span>
+                <a href="" class="btn add-to-cart-btn">add to basket</a>
+
+            </div>
+
+            <div class="box food-item"  data-name="chicken combo mania" data-id="9" data-price="299">
+                <a  class="fa-solid fa-heart" id="addToWishlistBtn9"></a>
+                <img src="/static/Tandoori-Platter-scaled-1-768x644.jpg">
+                <h3>chicken combo mania</h3>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span>&#8377;299<span>
+                <a href="" class="btn add-to-cart-btn">add to basket</a>
+
+            </div>
+
+        </div>
+
+    </section>
+    
+
+<!-- about section -->
+     <section class="about" id="about">
+
+        <h3 class="sub-heading"> about us </h3>
+        <h1 class="heading"> why choose us? </h1>
+        
+         <div class="row">
+
+            <div class="image">
+                <img src="/static/running chick.png">
+            
+            </div>
+
+             <div class="content">
+
+                <h3>best foods in the country</h3>
+                <p>we are very happy to tell you that, you are in the right place to enjoy the appetizing food from nowhere.</p>
+
+                <p>we serve you the best dishes which you have never tasted in your entire lifetime.</p>
+                <div class="icons-container">
+                    <div class="icons">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        <span>free delivery</span>
+                    </div>
+
+                    <div class="icons">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                        <span>easy payments</span>
+                    </div>
+
+                    <div class="icons">
+                        <i class="fa-solid fa-headset"></i>
+                        <span>24/7</span>
+                    </div>
+
+                </div>
+                <a href="#" class="btn">learn more</a>
+
+             </div>
+
+         </div>
+
+     </section>
+
+
+<!-- our team -->
+    <section class="team" id="team">
+
+        <h3 class="sub-heading"> review </h3>
+        <h1 class="heading"> </h1>
+
+        <div class="swiper mySwiper team-slider"> 
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide slide">
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="/static/crab fry .jpg" alt="">
+                        <div class="user-info">
+                            <h3>karthik</h3>
+                            <div class="stars">
+                                <i>ariyalur</i>
+                                <!-- <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i> -->
+                            </div>
+                        </div>
+                    </div>
+                    <p>right amount for the good taste i have never taste like this and the delivery persons are very humbled </p>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="/static/crab fry .jpg" alt="">
+                        <div class="user-info">
+                            <h3>elwin</h3>
+                            <div class="stars">
+                                <i>choolaimedu</i>
+                                <!-- <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i> -->
+                            </div>
+                        </div>
+                    </div>
+                    <p>hi, i'm elwin i orderd more than 20 times they never deievered food lately ,they are very punctuality</p>
+                </div>
+                
+                <div class="swiper-slide slide">
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="/static/crab fry .jpg" alt="">
+                        <div class="user-info">
+                            <h3>yakesh</h3>
+                            <div class="stars">
+                                <i>adayar</i>
+                                <!-- <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i> -->
+                            </div>
+                        </div>
+                    </div>
+                    <p>quality and hygenic food delievery and very nice taste and also very good at packing food items</p>
+                </div>
+                
+                <!-- <div class="swiper-slide slide">
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="/static/crab fry .jpg" alt="">
+                        <div class="user-info">
+                            <h3>yakesh</h3>
+                            <div class="stars">
+                                <i>software developer</i>
+                                 <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i> 
+                            </div>
+                        </div>
+                    </div>
+                    <p>hi, i'm python full stack developer. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, similique?</p>
+                </div> -->
+            </div>
+        </div>
+
+
+
+    </section>
+
+<!-- order
+    <section class="order" id="order">
+
+        <h3 class="sub-heading"> order now </h3>
+        <h1 class="heading"> free and fast </h1>
+
+        <form action="">
+            <div class="inputBox">
+                <div class="input">
+                    <span> your name </span>
+                    <input type="text" placeholder="enter your name ">
+                </div>
+
+                <div class="input">
+                    <span> your number </span>
+                    <input type="number" placeholder="enter your number ">
+                </div>
+            </div>
+
+            <div class="inputBox">
+                <div class="input">
+                    <span> your order </span>
+                    <input type="text" placeholder="enter food name ">
+                </div>
+
+                <div class="input">
+                    <span> additional food </span>
+                    <input type="test" placeholder="extra with food">
+                </div>
+            </div>
+
+            <div class="inputBox">
+                <div class="input">
+                    <span> how musch </span>
+                    <input type="text" placeholder="how many orders ">
+                </div>
+
+                <div class="input">
+                    <span> date and time </span>
+                    <input type="datetime-local" >
+                </div>
+
+            </div>
+
+        
+            <div class="inputBox">
+                <div class="input">
+                    <span> your address </span>
+                    <textarea name="" placeholder="enter your address" id="" cols="30" rows="10"></textarea>
+                </div>
+
+                <div class="input">
+                    <span>enter your message </span>
+                    <textarea name="" placeholder="enter your message" id="" cols="30" rows="10"></textarea>
+                </div>
+
+
+            </div>
+
+            <input type="submit" value="order now" class="btn">
+        </form>
+    </section> -->
+
+
+
+<!-- footer section -->
+     <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>locations</h3>
+                <a href="https://maps.app.goo.gl/RywjHSQyNKozZJDE7" target="_blank">chennai</a>
+                <a href="https://maps.app.goo.gl/dcZUFMGUiv6YiCx76" target="_blank">ariyalur</a>
+                <a href="https://maps.app.goo.gl/zFAJozvK3tCkLA558" target="_blank">tuticorin</a>
+            </div>
+
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="#home">home</a>
+                <a href="#dishes">dishes</a>
+                <a href="#about">about</a>
+                <a href="#team">our team</a>
+            </div>
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="https://web.whatsapp.com/" target="_blank">+919876543210</a>
+                <a href="https://www.google.com/gmail/about/" target="_blank">dailykozhi@gmail.com</a>
+                <a href="https://maps.app.goo.gl/RywjHSQyNKozZJDE7" target="_blank">chennai - 600008</a>
+            </div>
+
+            <div class="box">
+                <h3>follow us</h3>
+                <a href="https://www.facebook.com/" target="_blank">facebook</a>
+                <a href="https://www.instagram.com/?hl=en" target="_blank">instagram</a>
+                <a href="https://twitter.com/?lang=en-in" target="_blank">twitter</a>
+            </div>
+
+        </div>
+
+        
+
+        
+     </section>
+     <section></section>
+     <section><div class="credit"> copyright @2023 by <a href="#team">our team</a></div></section>
+     <section></section>
+
+
+     
+    
+    
+</body>
+</html>
+

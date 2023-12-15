@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+</head>
+<title>user details</title>
+<style>
+:root{
+    --green: #27ae60;
+    --black:#192a56;
+    --light-color: #666;}
+
+body {
+    font-family: Arial, sans-serif;
+    /* background-color: var(--black); */
+    color: var(--light-color);
+    margin: 1%;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+div {
+    margin-bottom: 10px;
+}
+
+a {
+    margin-top: 1%;
+    width: 200px;
+    text-decoration: none;
+    padding: 10px;
+    background-color: var(--black);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+h2{
+    color: var(--green);
+    margin-top: 6%;
+    text-transform: capitalize;
+}
+
+table{
+    margin-top: 2%;
+}
+
+td{
+    padding: 10px 10px;
+}
+
+td:nth-child(odd){
+    text-transform: capitalize;
+}
+
+a:hover {
+    background-color: var(--green);
+}
+
+</style>
+</head>
+<body>
+<h2>your profile</h2>
+<table>
+    <tr>
+<td>name: </td><td> {{data_name}}</td></tr><tr>
+<td>email address: </td><td>{{data_email}}</td></tr><tr>
+<td>address: </td><td>{{data_address}}</td></tr><tr>
+<td>mobile number: </td><td>{{data_phone_number}}</td></tr>
+<tr><td colspan="2" style="text-align: center;padding-top: 8%;" >
+<a href='/forget password' > change password</a></td></tr>
+<tr><td colspan="2" style="text-align: center;padding-top: 8%;"> 
+<a href='/logout'>log out</a></td></tr>
+</table>
+
+</body>
+</html>
